@@ -720,6 +720,7 @@ function Onboarding({ userId, onComplete }: { userId: string, onComplete: (u: an
                     <option value="light">Lightly Active</option>
                     <option value="moderate">Moderately Active</option>
                     <option value="active">Very Active</option>
+                    <option value="extreme">Extremely Active</option>
                   </select>
                 </div>
                 <div>

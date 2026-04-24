@@ -55,23 +55,24 @@ export async function PATCH(req: Request) {
 
     // Activity Multipliers (Standard TDEE)
     const activityMultipliers: any = {
-      sedentary: 1.2,        // Little or no exercise
-      light: 1.375,          // Light exercise 1-3 days/week
-      moderate: 1.55,        // Moderate exercise 3-5 days/week
-      active: 1.725,         // Hard exercise 6-7 days/week
-      very_active: 1.9       // Very hard exercise/physical job
+      sedentary: 1.2,        // Sedentary (desk job, no exercise)
+      light: 1.375,          // Lightly active (1–3 days/week exercise)
+      moderate: 1.55,        // Moderately active (3–5 days/week)
+      active: 1.725,         // Very active (6–7 days/week hard exercise)
+      extreme: 1.9           // Extremely active (physical job + exercise)
     };
 
-    let targetCalories = Math.round(bmr * (activityMultipliers[data.activityLevel] || 1.2));
+    let maintenanceCalories = Math.round(bmr * (activityMultipliers[data.activityLevel] || 1.2));
+    let targetCalories = maintenanceCalories;
     
-    // Goal Adjustments
+    // Goal Adjustments (Standard ±500 kcal for 0.5kg/week change)
     if (data.goal === 'lose') {
-      targetCalories = Math.round(targetCalories * 0.85); // 15% deficit for sustainable loss
+      targetCalories = maintenanceCalories - 500; 
     } else if (data.goal === 'gain') {
-      targetCalories = Math.round(targetCalories * 1.1);  // 10% surplus for lean gain
+      targetCalories = maintenanceCalories + 500;
     }
 
-    // Safety Minimums
+    // Safety Minimums (Don't let calories drop too low)
     const minCalories = data.gender === 'male' ? 1500 : 1200;
     if (targetCalories < minCalories) targetCalories = minCalories;
 
