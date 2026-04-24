@@ -104,7 +104,7 @@ function MacroMini({ label, value, color }: any) {
   return (
     <div style={{ background: 'rgba(255,255,255,0.02)', padding: '10px', borderRadius: '14px', border: '1px solid var(--border)' }}>
       <p className="text-muted" style={{ fontSize: '10px', textTransform: 'uppercase', fontWeight: 700, marginBottom: '2px' }}>{label}</p>
-      <p style={{ fontWeight: 700, fontSize: '14px' }}>{value}<span style={{ fontWeight: 400, fontSize: '10px', marginLeft: '1px' }}>g</span></p>
+      <p style={{ fontWeight: 700, fontSize: '14px' }}>{Math.round(value)}<span style={{ fontWeight: 400, fontSize: '10px', marginLeft: '1px' }}>g</span></p>
     </div>
   );
 }

@@ -299,52 +299,52 @@ export default function Home() {
             </div>
           </div>
 
-            <div className="grid-cols-2">
-              <MacroCard 
-                label="Protein" 
-                value={filteredMeals.reduce((s,m) => s+(m.protein||0), 0)} 
-                target={Math.round((targetCals * 0.3) / 4)} 
-                color="var(--protein)" 
-                icon={<Zap size={14} />}
-              />
-              <MacroCard 
-                label="Carbs" 
-                value={filteredMeals.reduce((s,m) => s+(m.carbs||0), 0)} 
-                target={Math.round((targetCals * 0.4) / 4)} 
-                color="var(--carbs)" 
-                icon={<Activity size={14} />}
-              />
-              <MacroCard 
-                label="Fat" 
-                value={filteredMeals.reduce((s,m) => s+(m.fat||0), 0)} 
-                target={Math.round((targetCals * 0.3) / 9)} 
-                color="var(--fat)" 
-                icon={<Droplets size={14} />}
-              />
-              
-              <div className="card-premium glass" style={{ padding: '20px' }}>
-                <div className="flex-between" style={{ marginBottom: '12px' }}>
-                  <span style={{ color: '#3b82f6', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600 }}>
-                    <Droplets size={14} /> Hydration
-                  </span>
-                  <span className="text-muted text-small">{user?.waterIntake || 0}/8 cups</span>
+          <div className="grid-cols-2">
+            <MacroCard 
+              label="Protein" 
+              value={filteredMeals.reduce((s,m) => s+(m.protein||0), 0)} 
+              target={Math.round((targetCals * 0.3) / 4)} 
+              color="var(--protein)" 
+              icon={<Zap size={14} />}
+            />
+            <MacroCard 
+              label="Carbs" 
+              value={filteredMeals.reduce((s,m) => s+(m.carbs||0), 0)} 
+              target={Math.round((targetCals * 0.4) / 4)} 
+              color="var(--carbs)" 
+              icon={<Activity size={14} />}
+            />
+            <MacroCard 
+              label="Fat" 
+              value={filteredMeals.reduce((s,m) => s+(m.fat||0), 0)} 
+              target={Math.round((targetCals * 0.3) / 9)} 
+              color="var(--fat)" 
+              icon={<Droplets size={14} />}
+            />
+            
+            <div className="card-premium glass" style={{ padding: '20px' }}>
+              <div className="flex-between" style={{ marginBottom: '12px' }}>
+                <span style={{ color: '#3b82f6', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600 }}>
+                  <Droplets size={14} /> Hydration
+                </span>
+                <span className="text-muted text-small">{Math.round((user?.waterIntake || 0) * 10) / 10}/8 cups</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                <div style={{ flex: 1, height: '40px', background: 'rgba(59, 130, 246, 0.05)', borderRadius: '12px', position: 'relative', overflow: 'hidden', border: '1px solid rgba(59, 130, 246, 0.1)' }}>
+                  <motion.div 
+                    initial={{ height: 0 }}
+                    animate={{ height: `${Math.min(100, ((user?.waterIntake || 0) / 8) * 100)}%` }}
+                    style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', background: '#3b82f6', opacity: 0.3 }}
+                  />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
-                  <div style={{ flex: 1, height: '40px', background: 'rgba(59, 130, 246, 0.05)', borderRadius: '12px', position: 'relative', overflow: 'hidden', border: '1px solid rgba(59, 130, 246, 0.1)' }}>
-                    <motion.div 
-                      initial={{ height: 0 }}
-                      animate={{ height: `${Math.min(100, ((user?.waterIntake || 0) / 8) * 100)}%` }}
-                      style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', background: '#3b82f6', opacity: 0.3 }}
-                    />
-                  </div>
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <div onClick={() => handleUpdateWater(-1)} className="glass icon-box" style={{ width: '36px', height: '36px', borderRadius: '10px' }}><Minus size={14} /></div>
-                    <div onClick={() => handleUpdateWater(1)} className="glass icon-box" style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.2)' }}><Plus size={14} /></div>
-                  </div>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <div onClick={() => handleUpdateWater(-1)} className="glass icon-box" style={{ width: '36px', height: '36px', borderRadius: '10px' }}><Minus size={14} /></div>
+                  <div onClick={() => handleUpdateWater(1)} className="glass icon-box" style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.2)' }}><Plus size={14} /></div>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
         {/* Log Section */}
         <section>
@@ -597,7 +597,10 @@ function MacroCard({ label, value, target, color, icon }: any) {
         <div style={{ color, display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: 600 }}>
           {icon} {label}
         </div>
-        <span className="text-muted text-small">{value}/{target}g</span>
+        <div style={{ textAlign: 'right' }}>
+          <div style={{ fontSize: '14px', fontWeight: 700 }}>{Math.round(value)}/{target}g</div>
+          <div className="text-muted text-small" style={{ fontSize: '10px' }}>{Math.round(percentage)}%</div>
+        </div>
       </div>
       <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden' }}>
         <motion.div 
@@ -614,7 +617,7 @@ function MacroMini({ label, value, unit, color }: any) {
   return (
     <div className="glass" style={{ padding: '12px', borderRadius: '12px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.03)' }}>
       <p className="text-muted" style={{ fontSize: '11px', fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase' }}>{label}</p>
-      <p style={{ fontSize: '14px', fontWeight: 700, color }}>{value}<span style={{ fontSize: '10px', opacity: 0.6, marginLeft: '1px' }}>{unit}</span></p>
+      <p style={{ fontSize: '14px', fontWeight: 700, color }}>{Math.round(value)}<span style={{ fontSize: '10px', opacity: 0.6, marginLeft: '1px' }}>{unit}</span></p>
     </div>
   );
 }
@@ -623,7 +626,10 @@ function DetailRow({ label, value, unit }: any) {
   return (
     <div className="flex-between" style={{ fontSize: '13px' }}>
       <span className="text-muted">{label}</span>
-      <span style={{ fontWeight: 500 }}>{value || 0}<span className="text-small" style={{ opacity: 0.5, marginLeft: '2px' }}>{unit}</span></span>
+      <span style={{ fontWeight: 500 }}>
+        {typeof value === 'number' ? (value < 1 ? value.toFixed(2) : value.toFixed(1)) : (value || 0)}
+        <span className="text-small" style={{ opacity: 0.5, marginLeft: '2px' }}>{unit}</span>
+      </span>
     </div>
   );
 }
