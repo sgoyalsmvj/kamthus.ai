@@ -10,7 +10,7 @@ export default function Home() {
   const [user, setUser] = useState<any>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
   const [input, setInput] = useState("");
   const [nickname, setNickname] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -20,6 +20,7 @@ export default function Home() {
   const [editingMeal, setEditingMeal] = useState<any>(null);
   const [editForm, setEditForm] = useState<any>({});
   const [mounted, setMounted] = useState(false);
+  const [isAuthChecking, setIsAuthChecking] = useState(true);
 
   // Generate last 7 days dynamically
   const days = Array.from({ length: 7 }, (_, i) => {
@@ -41,6 +42,9 @@ export default function Home() {
     const savedUserId = localStorage.getItem("kamthus_userId");
     if (savedUserId) {
       handleLogin(localStorage.getItem("kamthus_nickname") || "");
+    } else {
+      setShowLogin(true);
+      setIsAuthChecking(false);
     }
   }, []);
 
@@ -67,6 +71,9 @@ export default function Home() {
       }
     } catch (error) {
       console.error("Login failed:", error);
+      setShowLogin(true);
+    } finally {
+      setIsAuthChecking(false);
     }
   };
 
@@ -80,7 +87,7 @@ export default function Home() {
   const targetCals = user?.targetCalories || 2000;
   const remainingCals = Math.max(0, targetCals - totalCals);
 
-  if (!mounted) return null;
+  if (!mounted || isAuthChecking) return null;
 
   if (showLogin) {
     return (
