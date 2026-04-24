@@ -225,16 +225,20 @@ export default function Home() {
             <div 
               key={d.dayNumber} 
               onClick={() => setSelectedDate(d.dayNumber)}
-              className={`date-pill ${d.dayNumber === selectedDate ? 'today' : 'active'}`} 
+              className={`glass ${d.dayNumber === selectedDate ? 'active-date' : ''}`} 
               style={{ 
-                flexShrink: 0,
+                minWidth: '46px',
+                padding: '8px 4px',
+                borderRadius: '12px',
+                textAlign: 'center',
                 cursor: 'pointer',
                 transition: 'var(--transition)',
-                transform: d.dayNumber === selectedDate ? 'scale(1.05)' : 'scale(1)'
+                border: d.dayNumber === selectedDate ? '1px solid var(--accent)' : '1px solid transparent',
+                background: d.dayNumber === selectedDate ? 'rgba(59, 130, 246, 0.1)' : 'rgba(255, 255, 255, 0.03)'
               }}
             >
-              <span className="text-small" style={{ fontWeight: 600, opacity: 0.8, marginBottom: '4px', textTransform: 'uppercase' }}>{d.dayName}</span>
-              <span style={{ fontSize: '22px', fontWeight: 800 }}>{d.dayNumber}</span>
+              <div style={{ fontSize: '10px', fontWeight: 600, opacity: 0.6, marginBottom: '2px', textTransform: 'uppercase' }}>{d.dayName}</div>
+              <div style={{ fontSize: '16px', fontWeight: 800 }}>{d.dayNumber}</div>
             </div>
           ))}
         </div>
