@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #050505;
+  --surface: #0f0f12;
+  --surface-lift: #16161a;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-bright: rgba(255, 255, 255, 0.12);
+  --fg: #ffffff;
+  --muted: #808085;
+  --accent: #ff7e33;
+  
+  /* Macro Colors */
+  --cals: #ff7e33;
+  --carbs: #3b82f6;
+  --protein: #a855f7;
+  --fat: #10b981;
+  
+  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(15, 15, 18, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.glass-lift {
+  background: rgba(22, 22, 26, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-bright);
+  box-shadow: var(--shadow-md);
+}
+
+/* Typography */
+.h1 { font-size: 2.5rem; fontWeight: 800; letter-spacing: -0.04em; }
+.h2 { font-size: 1.5rem; fontWeight: 700; letter-spacing: -0.02em; }
+.text-muted { color: var(--muted); }
+.text-small { font-size: 0.75rem; }
+
+/* Components */
+.card-premium {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.card-premium:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-2px);
+}
+
+.icon-box {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: var(--muted);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.icon-box:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--fg);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--fg);
+  color: var(--bg);
+  border: none;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.input-minimal {
+  width: 100%;
+  background: var(--surface-lift);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  color: var(--fg);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.input-minimal:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 126, 51, 0.1);
+}
+
+/* Date Picker */
+.date-pill {
+  min-width: 64px;
+  height: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.date-pill.active {
+  background: var(--surface-lift);
+  border-color: var(--border-bright);
+}
+
+.date-pill.today {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.date-pill.today span {
+  color: inherit !important;
+}
+
+/* Progress */
+.progress-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Utils */
+.flex-between { display: flex; justify-content: space-between; alignItems: center; }
+.grid-cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 10px; }
+

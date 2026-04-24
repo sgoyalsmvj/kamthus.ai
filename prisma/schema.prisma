@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id             String   @id @default(cuid())
+  nickname       String   @unique
+  age            Int?
+  gender         String?
+  weight         Float?   // in kg
+  height         Float?   // in cm
+  activityLevel  String?  // sedentary, light, moderate, active, very_active
+  goal           String?  // lose, maintain, gain
+  targetCalories Int?
+  meals          Meal[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Meal {
+  id        String   @id @default(cuid())
+  name      String
+  calories  Int
+  protein   Float?
+  carbs     Float?
+  fat       Float?
+  confidence Float?
+  time      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([createdAt])
+}
