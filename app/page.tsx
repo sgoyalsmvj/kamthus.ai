@@ -87,7 +87,20 @@ export default function Home() {
   const targetCals = user?.targetCalories || 2000;
   const remainingCals = Math.max(0, targetCals - totalCals);
 
-  if (!mounted || isAuthChecking) return null;
+  if (!mounted || isAuthChecking) {
+    return (
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg)' }}>
+        <motion.div
+          animate={{ opacity: [0.3, 0.6, 0.3] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          style={{ textAlign: 'center' }}
+        >
+          <div style={{ width: '32px', height: '2px', background: 'var(--accent)', margin: '0 auto 16px', borderRadius: '1px' }} />
+          <h2 style={{ fontSize: '14px', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.8 }}>Kamthus Intelligence</h2>
+        </motion.div>
+      </div>
+    );
+  }
 
   if (showLogin) {
     return (
