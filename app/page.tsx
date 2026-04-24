@@ -14,6 +14,7 @@ export default function Home() {
   const [input, setInput] = useState("");
   const [nickname, setNickname] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<number>(new Date().getDate());
   const [mounted, setMounted] = useState(false);
 
   // Generate last 7 days dynamically
@@ -24,11 +25,12 @@ export default function Home() {
       dayName: date.toLocaleDateString('en-US', { weekday: 'short' }),
       dayNumber: date.getDate(),
       fullDate: date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }),
-      isToday: i === 6
+      isToday: i === 6,
+      rawDate: date
     };
   });
 
-  const todayLabel = days[6].fullDate;
+  const selectedDayLabel = days.find(d => d.dayNumber === selectedDate)?.fullDate || days[6].fullDate;
 
   useEffect(() => {
     setMounted(true);
@@ -64,7 +66,13 @@ export default function Home() {
     }
   };
 
-  const totalCals = meals.reduce((sum, m) => sum + (m.calories || 0), 0);
+  // Filter meals for the selected date
+  const filteredMeals = meals.filter(meal => {
+    const mealDate = new Date(meal.createdAt);
+    return mealDate.getDate() === selectedDate;
+  });
+
+  const totalCals = filteredMeals.reduce((sum, m) => sum + (m.calories || 0), 0);
   const targetCals = user?.targetCalories || 2000;
   const remainingCals = Math.max(0, targetCals - totalCals);
 
@@ -140,8 +148,8 @@ export default function Home() {
       <header style={{ padding: '24px 24px 16px', position: 'sticky', top: 0, background: 'rgba(5,5,5,0.85)', backdropFilter: 'blur(16px)', zIndex: 100, borderBottom: '1px solid var(--border)' }}>
         <div className="flex-between" style={{ marginBottom: '24px' }}>
           <div>
-            <p className="text-muted text-small" style={{ textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '4px', fontWeight: 600 }}>{new Date().toLocaleDateString('en-US', { weekday: 'long' })}</p>
-            <h1 style={{ fontSize: '24px', fontWeight: 800, letterSpacing: '-0.02em' }}>{todayLabel}</h1>
+            <p className="text-muted text-small" style={{ textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '4px', fontWeight: 600 }}>{selectedDate === new Date().getDate() ? 'Today' : 'Intelligence Log'}</p>
+            <h1 style={{ fontSize: '24px', fontWeight: 800, letterSpacing: '-0.02em' }}>{selectedDayLabel}</h1>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
             <Link href="/history">
@@ -159,7 +167,17 @@ export default function Home() {
         
         <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '12px', scrollbarWidth: 'none' }}>
           {days.map((d) => (
-            <div key={d.dayNumber} className={`date-pill ${d.isToday ? 'today' : 'active'}`} style={{ flexShrink: 0 }}>
+            <div 
+              key={d.dayNumber} 
+              onClick={() => setSelectedDate(d.dayNumber)}
+              className={`date-pill ${d.dayNumber === selectedDate ? 'today' : 'active'}`} 
+              style={{ 
+                flexShrink: 0,
+                cursor: 'pointer',
+                transition: 'var(--transition)',
+                transform: d.dayNumber === selectedDate ? 'scale(1.05)' : 'scale(1)'
+              }}
+            >
               <span className="text-small" style={{ fontWeight: 600, opacity: 0.8, marginBottom: '4px', textTransform: 'uppercase' }}>{d.dayName}</span>
               <span style={{ fontSize: '22px', fontWeight: 800 }}>{d.dayNumber}</span>
             </div>
@@ -205,21 +223,21 @@ export default function Home() {
             <div className="grid-cols-2">
               <MacroCard 
                 label="Protein" 
-                value={meals.reduce((s,m) => s+(m.protein||0), 0)} 
+                value={filteredMeals.reduce((s,m) => s+(m.protein||0), 0)} 
                 target={Math.round((targetCals * 0.3) / 4)} 
                 color="var(--protein)" 
                 icon={<Zap size={14} />}
               />
               <MacroCard 
                 label="Carbs" 
-                value={meals.reduce((s,m) => s+(m.carbs||0), 0)} 
+                value={filteredMeals.reduce((s,m) => s+(m.carbs||0), 0)} 
                 target={Math.round((targetCals * 0.4) / 4)} 
                 color="var(--carbs)" 
                 icon={<Activity size={14} />}
               />
               <MacroCard 
                 label="Fat" 
-                value={meals.reduce((s,m) => s+(m.fat||0), 0)} 
+                value={filteredMeals.reduce((s,m) => s+(m.fat||0), 0)} 
                 target={Math.round((targetCals * 0.3) / 9)} 
                 color="var(--fat)" 
                 icon={<Droplets size={14} />}
@@ -244,15 +262,16 @@ export default function Home() {
           </div>
 
           <div style={{ display: 'grid', gap: '16px' }}>
-            <AnimatePresence>
-              {meals.length === 0 ? (
-                <div className="card-premium" style={{ borderStyle: 'dashed', textAlign: 'center', padding: '48px 24px' }}>
-                  <p className="text-muted">No nutrition data logged for today yet.</p>
-                </div>
+            <AnimatePresence mode="popLayout">
+              {filteredMeals.length === 0 ? (
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="card-premium" style={{ borderStyle: 'dashed', textAlign: 'center', padding: '48px 24px' }}>
+                  <p className="text-muted">No nutrition data logged for this day.</p>
+                </motion.div>
               ) : (
-                meals.map((meal, index) => (
+                filteredMeals.map((meal, index) => (
                   <motion.div 
                     key={meal.id || index}
+                    layout
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
@@ -262,7 +281,7 @@ export default function Home() {
                     <div className="flex-between" style={{ marginBottom: '16px' }}>
                       <div>
                         <h3 style={{ fontSize: '17px', fontWeight: 600 }}>{meal.name}</h3>
-                        <p className="text-muted text-small">{meal.time || 'Just now'}</p>
+                        <p className="text-muted text-small">{meal.time || 'Logged'}</p>
                       </div>
                       <div style={{ textAlign: 'right' }}>
                         <span style={{ fontSize: '18px', fontWeight: 700 }}>{meal.calories}</span>
