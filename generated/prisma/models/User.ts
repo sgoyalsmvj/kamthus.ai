@@ -31,6 +31,7 @@ export type UserAvgAggregateOutputType = {
   weight: number | null
   height: number | null
   targetCalories: number | null
+  waterIntake: number | null
 }
 
 export type UserSumAggregateOutputType = {
@@ -38,6 +39,7 @@ export type UserSumAggregateOutputType = {
   weight: number | null
   height: number | null
   targetCalories: number | null
+  waterIntake: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -50,6 +52,7 @@ export type UserMinAggregateOutputType = {
   activityLevel: string | null
   goal: string | null
   targetCalories: number | null
+  waterIntake: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -64,6 +67,7 @@ export type UserMaxAggregateOutputType = {
   activityLevel: string | null
   goal: string | null
   targetCalories: number | null
+  waterIntake: number | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -78,6 +82,7 @@ export type UserCountAggregateOutputType = {
   activityLevel: number
   goal: number
   targetCalories: number
+  waterIntake: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -89,6 +94,7 @@ export type UserAvgAggregateInputType = {
   weight?: true
   height?: true
   targetCalories?: true
+  waterIntake?: true
 }
 
 export type UserSumAggregateInputType = {
@@ -96,6 +102,7 @@ export type UserSumAggregateInputType = {
   weight?: true
   height?: true
   targetCalories?: true
+  waterIntake?: true
 }
 
 export type UserMinAggregateInputType = {
@@ -108,6 +115,7 @@ export type UserMinAggregateInputType = {
   activityLevel?: true
   goal?: true
   targetCalories?: true
+  waterIntake?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -122,6 +130,7 @@ export type UserMaxAggregateInputType = {
   activityLevel?: true
   goal?: true
   targetCalories?: true
+  waterIntake?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -136,6 +145,7 @@ export type UserCountAggregateInputType = {
   activityLevel?: true
   goal?: true
   targetCalories?: true
+  waterIntake?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -237,6 +247,7 @@ export type UserGroupByOutputType = {
   activityLevel: string | null
   goal: string | null
   targetCalories: number | null
+  waterIntake: number
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -274,6 +285,7 @@ export type UserWhereInput = {
   activityLevel?: Prisma.StringNullableFilter<"User"> | string | null
   goal?: Prisma.StringNullableFilter<"User"> | string | null
   targetCalories?: Prisma.IntNullableFilter<"User"> | number | null
+  waterIntake?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   meals?: Prisma.MealListRelationFilter
@@ -289,6 +301,7 @@ export type UserOrderByWithRelationInput = {
   activityLevel?: Prisma.SortOrderInput | Prisma.SortOrder
   goal?: Prisma.SortOrderInput | Prisma.SortOrder
   targetCalories?: Prisma.SortOrderInput | Prisma.SortOrder
+  waterIntake?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   meals?: Prisma.MealOrderByRelationAggregateInput
@@ -307,6 +320,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   activityLevel?: Prisma.StringNullableFilter<"User"> | string | null
   goal?: Prisma.StringNullableFilter<"User"> | string | null
   targetCalories?: Prisma.IntNullableFilter<"User"> | number | null
+  waterIntake?: Prisma.IntFilter<"User"> | number
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   meals?: Prisma.MealListRelationFilter
@@ -322,6 +336,7 @@ export type UserOrderByWithAggregationInput = {
   activityLevel?: Prisma.SortOrderInput | Prisma.SortOrder
   goal?: Prisma.SortOrderInput | Prisma.SortOrder
   targetCalories?: Prisma.SortOrderInput | Prisma.SortOrder
+  waterIntake?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -344,6 +359,7 @@ export type UserScalarWhereWithAggregatesInput = {
   activityLevel?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   goal?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   targetCalories?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
+  waterIntake?: Prisma.IntWithAggregatesFilter<"User"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -358,6 +374,7 @@ export type UserCreateInput = {
   activityLevel?: string | null
   goal?: string | null
   targetCalories?: number | null
+  waterIntake?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   meals?: Prisma.MealCreateNestedManyWithoutUserInput
@@ -373,6 +390,7 @@ export type UserUncheckedCreateInput = {
   activityLevel?: string | null
   goal?: string | null
   targetCalories?: number | null
+  waterIntake?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   meals?: Prisma.MealUncheckedCreateNestedManyWithoutUserInput
@@ -388,6 +406,7 @@ export type UserUpdateInput = {
   activityLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   targetCalories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  waterIntake?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meals?: Prisma.MealUpdateManyWithoutUserNestedInput
@@ -403,6 +422,7 @@ export type UserUncheckedUpdateInput = {
   activityLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   targetCalories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  waterIntake?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   meals?: Prisma.MealUncheckedUpdateManyWithoutUserNestedInput
@@ -418,6 +438,7 @@ export type UserCreateManyInput = {
   activityLevel?: string | null
   goal?: string | null
   targetCalories?: number | null
+  waterIntake?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -432,6 +453,7 @@ export type UserUpdateManyMutationInput = {
   activityLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   targetCalories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  waterIntake?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -446,6 +468,7 @@ export type UserUncheckedUpdateManyInput = {
   activityLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   targetCalories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  waterIntake?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -460,6 +483,7 @@ export type UserCountOrderByAggregateInput = {
   activityLevel?: Prisma.SortOrder
   goal?: Prisma.SortOrder
   targetCalories?: Prisma.SortOrder
+  waterIntake?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -469,6 +493,7 @@ export type UserAvgOrderByAggregateInput = {
   weight?: Prisma.SortOrder
   height?: Prisma.SortOrder
   targetCalories?: Prisma.SortOrder
+  waterIntake?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -481,6 +506,7 @@ export type UserMaxOrderByAggregateInput = {
   activityLevel?: Prisma.SortOrder
   goal?: Prisma.SortOrder
   targetCalories?: Prisma.SortOrder
+  waterIntake?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -495,6 +521,7 @@ export type UserMinOrderByAggregateInput = {
   activityLevel?: Prisma.SortOrder
   goal?: Prisma.SortOrder
   targetCalories?: Prisma.SortOrder
+  waterIntake?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -504,6 +531,7 @@ export type UserSumOrderByAggregateInput = {
   weight?: Prisma.SortOrder
   height?: Prisma.SortOrder
   targetCalories?: Prisma.SortOrder
+  waterIntake?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -529,6 +557,14 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type NullableFloatFieldUpdateOperationsInput = {
   set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
   increment?: number
   decrement?: number
   multiply?: number
@@ -563,6 +599,7 @@ export type UserCreateWithoutMealsInput = {
   activityLevel?: string | null
   goal?: string | null
   targetCalories?: number | null
+  waterIntake?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -577,6 +614,7 @@ export type UserUncheckedCreateWithoutMealsInput = {
   activityLevel?: string | null
   goal?: string | null
   targetCalories?: number | null
+  waterIntake?: number
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -607,6 +645,7 @@ export type UserUpdateWithoutMealsInput = {
   activityLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   targetCalories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  waterIntake?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -621,6 +660,7 @@ export type UserUncheckedUpdateWithoutMealsInput = {
   activityLevel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   goal?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   targetCalories?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  waterIntake?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -666,6 +706,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   activityLevel?: boolean
   goal?: boolean
   targetCalories?: boolean
+  waterIntake?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   meals?: boolean | Prisma.User$mealsArgs<ExtArgs>
@@ -682,6 +723,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   activityLevel?: boolean
   goal?: boolean
   targetCalories?: boolean
+  waterIntake?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -696,6 +738,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   activityLevel?: boolean
   goal?: boolean
   targetCalories?: boolean
+  waterIntake?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -710,11 +753,12 @@ export type UserSelectScalar = {
   activityLevel?: boolean
   goal?: boolean
   targetCalories?: boolean
+  waterIntake?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nickname" | "age" | "gender" | "weight" | "height" | "activityLevel" | "goal" | "targetCalories" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nickname" | "age" | "gender" | "weight" | "height" | "activityLevel" | "goal" | "targetCalories" | "waterIntake" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   meals?: boolean | Prisma.User$mealsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -737,6 +781,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     activityLevel: string | null
     goal: string | null
     targetCalories: number | null
+    waterIntake: number
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -1172,6 +1217,7 @@ export interface UserFieldRefs {
   readonly activityLevel: Prisma.FieldRef<"User", 'String'>
   readonly goal: Prisma.FieldRef<"User", 'String'>
   readonly targetCalories: Prisma.FieldRef<"User", 'Int'>
+  readonly waterIntake: Prisma.FieldRef<"User", 'Int'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

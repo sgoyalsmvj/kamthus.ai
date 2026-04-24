@@ -79,7 +79,8 @@ export async function PATCH(req: Request) {
       where: { id: userId },
       data: {
         ...data,
-        targetCalories
+        targetCalories: data.weight ? targetCalories : undefined,
+        waterIntake: data.waterIntake !== undefined ? data.waterIntake : undefined
       }
     });
 

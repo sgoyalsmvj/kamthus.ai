@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Activity, History, User, Search, Trophy, X, Send, ChevronRight, ChevronLeft, Check, Target, Flame, Droplets, Zap } from "lucide-react";
+import { Plus, Activity, History, User, Search, Trophy, X, Send, ChevronRight, ChevronLeft, Check, Target, Flame, Droplets, Zap, Trash2, Minus, Edit2 } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -14,7 +14,11 @@ export default function Home() {
   const [input, setInput] = useState("");
   const [nickname, setNickname] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [expandedMeals, setExpandedMeals] = useState<Set<string>>(new Set());
   const [selectedDate, setSelectedDate] = useState<number>(new Date().getDate());
+  const [editingMeal, setEditingMeal] = useState<any>(null);
+  const [editForm, setEditForm] = useState<any>({});
   const [mounted, setMounted] = useState(false);
 
   // Generate last 7 days dynamically
@@ -142,6 +146,57 @@ export default function Home() {
     }
   };
 
+  const handleDeleteMeal = async (mealId: string) => {
+    try {
+      const res = await fetch(`/api/analyze?mealId=${mealId}`, { method: "DELETE" });
+      const result = await res.json();
+      if (result.error) throw new Error(result.error);
+      setMeals(meals.filter(m => m.id !== mealId));
+    } catch (error: any) {
+      console.error("Delete failed:", error);
+    }
+  };
+
+  const handleUpdateWater = async (delta: number) => {
+    if (!user) return;
+    const newIntake = Math.max(0, (user.waterIntake || 0) + delta);
+    setUser({ ...user, waterIntake: newIntake }); // Optimistic update
+    try {
+      await fetch("/api/user", {
+        method: "PATCH",
+        body: JSON.stringify({ userId: user.id, waterIntake: newIntake })
+      });
+    } catch (e) {
+      console.error("Failed to update water");
+    }
+  };
+
+  const handleEditMeal = async () => {
+    if (!editForm.input?.trim()) return;
+    setIsUpdating(true);
+    try {
+      const res = await fetch("/api/analyze", {
+        method: "PATCH",
+        body: JSON.stringify({ mealId: editingMeal.id, input: editForm.input })
+      });
+      const updated = await res.json();
+      if (updated.error) throw new Error(updated.error);
+      setMeals(meals.map(m => m.id === updated.id ? updated : m));
+      setEditingMeal(null);
+    } catch (error: any) {
+      console.error("Update failed:", error);
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  const toggleExpandMeal = (id: string) => {
+    const newExpanded = new Set(expandedMeals);
+    if (newExpanded.has(id)) newExpanded.delete(id);
+    else newExpanded.add(id);
+    setExpandedMeals(newExpanded);
+  };
+
   return (
     <div className="app-container" style={{ minHeight: '100vh', background: 'var(--bg)' }}>
       {/* Premium Header */}
@@ -242,13 +297,28 @@ export default function Home() {
                 color="var(--fat)" 
                 icon={<Droplets size={14} />}
               />
-              <MacroCard 
-                label="Burn" 
-                value={0} 
-                target={500} 
-                color="var(--accent)" 
-                icon={<Flame size={14} />}
-              />
+              
+              <div className="card-premium glass" style={{ padding: '20px' }}>
+                <div className="flex-between" style={{ marginBottom: '12px' }}>
+                  <span style={{ color: '#3b82f6', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600 }}>
+                    <Droplets size={14} /> Hydration
+                  </span>
+                  <span className="text-muted text-small">{user?.waterIntake || 0}/8 cups</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                  <div style={{ flex: 1, height: '40px', background: 'rgba(59, 130, 246, 0.05)', borderRadius: '12px', position: 'relative', overflow: 'hidden', border: '1px solid rgba(59, 130, 246, 0.1)' }}>
+                    <motion.div 
+                      initial={{ height: 0 }}
+                      animate={{ height: `${Math.min(100, ((user?.waterIntake || 0) / 8) * 100)}%` }}
+                      style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', background: '#3b82f6', opacity: 0.3 }}
+                    />
+                  </div>
+                  <div style={{ display: 'flex', gap: '8px' }}>
+                    <div onClick={() => handleUpdateWater(-1)} className="glass icon-box" style={{ width: '36px', height: '36px', borderRadius: '10px' }}><Minus size={14} /></div>
+                    <div onClick={() => handleUpdateWater(1)} className="glass icon-box" style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.2)' }}><Plus size={14} /></div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -274,6 +344,7 @@ export default function Home() {
                     layout
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ delay: index * 0.05 }}
                     className="card-premium glass"
                     style={{ padding: '20px' }}
@@ -283,18 +354,80 @@ export default function Home() {
                         <h3 style={{ fontSize: '17px', fontWeight: 600 }}>{meal.name}</h3>
                         <p className="text-muted text-small">{meal.time || 'Logged'}</p>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
-                        <span style={{ fontSize: '18px', fontWeight: 700 }}>{meal.calories}</span>
-                        <span className="text-muted text-small" style={{ marginLeft: '4px' }}>kcal</span>
-                      </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                          <div style={{ textAlign: 'right' }}>
+                            <span style={{ fontSize: '18px', fontWeight: 700 }}>{meal.calories}</span>
+                            <span className="text-muted text-small" style={{ marginLeft: '4px' }}>kcal</span>
+                          </div>
+                          <div style={{ display: 'flex', gap: '6px' }}>
+                            <div 
+                              onClick={() => toggleExpandMeal(meal.id)}
+                              className="icon-box" 
+                              style={{ width: '32px', height: '32px', borderRadius: '8px', color: expandedMeals.has(meal.id) ? 'var(--accent)' : 'var(--muted)', background: 'rgba(255, 255, 255, 0.03)' }}
+                            >
+                              <ChevronRight size={16} style={{ transform: expandedMeals.has(meal.id) ? 'rotate(90deg)' : 'none', transition: 'transform 0.3s ease' }} />
+                            </div>
+                            <div 
+                              onClick={() => {
+                                setEditingMeal(meal);
+                                setEditForm({ input: meal.originalInput || meal.name });
+                              }}
+                              className="icon-box" 
+                              style={{ width: '32px', height: '32px', borderRadius: '8px', color: 'var(--muted)', background: 'rgba(255, 255, 255, 0.03)' }}
+                            >
+                              <Edit2 size={13} />
+                            </div>
+                            <div 
+                              onClick={() => handleDeleteMeal(meal.id)}
+                              className="icon-box" 
+                              style={{ width: '32px', height: '32px', borderRadius: '8px', color: 'rgba(239, 68, 68, 0.4)', background: 'rgba(239, 68, 68, 0.05)' }}
+                            >
+                              <Trash2 size={14} />
+                            </div>
+                          </div>
+                        </div>
                     </div>
 
-                    <div className="grid-cols-4">
-                      <MacroMini label="P" value={meal.protein} color="var(--protein)" />
-                      <MacroMini label="C" value={meal.carbs} color="var(--carbs)" />
-                      <MacroMini label="F" value={meal.fat} color="var(--fat)" />
-                      <MacroMini label="S" value={meal.sugar || 0} color="var(--cals)" />
+                    <div className="grid-cols-4" style={{ gap: '12px', marginBottom: expandedMeals.has(meal.id) ? '24px' : '0' }}>
+                      <MacroMini label="P" value={meal.protein || 0} unit="g" color="var(--protein)" />
+                      <MacroMini label="C" value={meal.carbs || 0} unit="g" color="var(--carbs)" />
+                      <MacroMini label="F" value={meal.fat || 0} unit="g" color="var(--fat)" />
+                      <MacroMini label="Fi" value={meal.fiber || 0} unit="g" color="var(--accent)" />
                     </div>
+
+                    <AnimatePresence>
+                      {expandedMeals.has(meal.id) && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          style={{ overflow: 'hidden' }}
+                        >
+                          <div className="glass" style={{ borderRadius: '16px', padding: '20px', border: '1px solid rgba(255,255,255,0.05)', display: 'grid', gap: '12px' }}>
+                            <h4 className="text-small" style={{ textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.5, marginBottom: '4px' }}>Deep Intelligence Breakdown</h4>
+                            
+                            <div style={{ display: 'grid', gap: '8px' }}>
+                              <DetailRow label="Sugar" value={meal.sugar} unit="g" />
+                              <DetailRow label="Added Sugars" value={meal.addedSugar} unit="g" />
+                              <DetailRow label="Net Carbs" value={meal.netCarbs} unit="g" />
+                              <div style={{ height: '1px', background: 'rgba(255,255,255,0.05)', margin: '4px 0' }} />
+                              <DetailRow label="Saturated Fat" value={meal.saturatedFat} unit="g" />
+                              <DetailRow label="Cholesterol" value={meal.cholesterol} unit="mg" />
+                              <DetailRow label="Sodium" value={meal.sodium} unit="mg" />
+                              <div style={{ height: '1px', background: 'rgba(255,255,255,0.05)', margin: '4px 0' }} />
+                              <div className="grid-cols-2" style={{ gap: '16px' }}>
+                                <DetailRow label="Calcium" value={meal.calcium} unit="mg" />
+                                <DetailRow label="Iron" value={meal.iron} unit="mg" />
+                                <DetailRow label="Potassium" value={meal.potassium} unit="mg" />
+                                <DetailRow label="Vit A" value={meal.vitaminA} unit="IU" />
+                                <DetailRow label="Vit C" value={meal.vitaminC} unit="mg" />
+                                <DetailRow label="Vit D" value={meal.vitaminD} unit="IU" />
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 ))
               )}
@@ -374,36 +507,99 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Edit Modal */}
+      <AnimatePresence>
+        {editingMeal && (
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(12px)', zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }}
+              className="card-premium glass-lift"
+              style={{ width: '100%', maxWidth: '440px', padding: '32px' }}
+            >
+              <div className="flex-between" style={{ marginBottom: '32px' }}>
+                <h2 className="h2">Refine Log</h2>
+                <div onClick={() => setEditingMeal(null)} className="glass icon-box" style={{ width: '36px', height: '36px' }}>
+                  <X size={20} />
+                </div>
+              </div>
+              
+              <div style={{ display: 'grid', gap: '20px' }}>
+                <div>
+                  <label className="text-muted text-small" style={{ textTransform: 'uppercase', marginBottom: '8px', display: 'block', fontWeight: 600 }}>Edit Description</label>
+                  <textarea 
+                    className="input-minimal" 
+                    value={editForm.input} 
+                    onChange={(e) => setEditForm({...editForm, input: e.target.value})}
+                    style={{ height: '120px', resize: 'none', background: 'rgba(255,255,255,0.02)' }}
+                    placeholder="Refine your description..."
+                  />
+                </div>
+              </div>
+              
+              <button 
+                onClick={handleEditMeal} 
+                disabled={isUpdating || !editForm.input?.trim()}
+                className="btn-primary" 
+                style={{ width: '100%', height: '56px', marginTop: '32px' }}
+              >
+                {isUpdating ? (
+                  <>
+                    <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}>
+                      <Activity size={18} />
+                    </motion.div>
+                    Re-Analyzing Intelligence...
+                  </>
+                ) : (
+                  <>Update Selection <Send size={16} /></>
+                )}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
 function MacroCard({ label, value, target, color, icon }: any) {
-  const pct = Math.min(100, (value / target) * 100);
+  const percentage = Math.min(100, (value / target) * 100);
   return (
     <div className="card-premium glass" style={{ padding: '20px' }}>
-      <div className="flex-between" style={{ marginBottom: '12px' }}>
-        <span style={{ color, display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', fontWeight: 600 }}>
+      <div className="flex-between" style={{ marginBottom: '16px' }}>
+        <div style={{ color, display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: 600 }}>
           {icon} {label}
-        </span>
-        <span className="text-muted text-small">{Math.round(pct)}%</span>
+        </div>
+        <span className="text-muted text-small">{value}/{target}g</span>
       </div>
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '12px' }}>
-        <span style={{ fontSize: '20px', fontWeight: 700 }}>{value}</span>
-        <span className="text-muted text-small">/ {target}g</span>
-      </div>
-      <div className="progress-container">
-        <div className="progress-bar" style={{ width: `${pct}%`, background: color }} />
+      <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden' }}>
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={{ width: `${percentage}%` }}
+          style={{ height: '100%', background: color }}
+        />
       </div>
     </div>
   );
 }
 
-function MacroMini({ label, value, color }: any) {
+function MacroMini({ label, value, unit, color }: any) {
   return (
-    <div style={{ background: 'rgba(255,255,255,0.02)', padding: '10px', borderRadius: '14px', border: '1px solid var(--border)' }}>
-      <p className="text-muted" style={{ fontSize: '10px', textTransform: 'uppercase', fontWeight: 700, marginBottom: '2px' }}>{label}</p>
-      <p style={{ fontWeight: 700, fontSize: '14px' }}>{value}<span style={{ fontWeight: 400, fontSize: '10px', marginLeft: '1px' }}>g</span></p>
+    <div className="glass" style={{ padding: '12px', borderRadius: '12px', textAlign: 'center', border: '1px solid rgba(255,255,255,0.03)' }}>
+      <p className="text-muted" style={{ fontSize: '11px', fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase' }}>{label}</p>
+      <p style={{ fontSize: '14px', fontWeight: 700, color }}>{value}<span style={{ fontSize: '10px', opacity: 0.6, marginLeft: '1px' }}>{unit}</span></p>
+    </div>
+  );
+}
+
+function DetailRow({ label, value, unit }: any) {
+  return (
+    <div className="flex-between" style={{ fontSize: '13px' }}>
+      <span className="text-muted">{label}</span>
+      <span style={{ fontWeight: 500 }}>{value || 0}<span className="text-small" style={{ opacity: 0.5, marginLeft: '2px' }}>{unit}</span></span>
     </div>
   );
 }

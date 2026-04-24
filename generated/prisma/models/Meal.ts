@@ -31,6 +31,23 @@ export type MealAvgAggregateOutputType = {
   protein: number | null
   carbs: number | null
   fat: number | null
+  fiber: number | null
+  sugar: number | null
+  addedSugar: number | null
+  sugarAlcohol: number | null
+  netCarbs: number | null
+  saturatedFat: number | null
+  transFat: number | null
+  polyunsaturatedFat: number | null
+  monounsaturatedFat: number | null
+  cholesterol: number | null
+  sodium: number | null
+  calcium: number | null
+  iron: number | null
+  potassium: number | null
+  vitaminA: number | null
+  vitaminC: number | null
+  vitaminD: number | null
   confidence: number | null
 }
 
@@ -39,6 +56,23 @@ export type MealSumAggregateOutputType = {
   protein: number | null
   carbs: number | null
   fat: number | null
+  fiber: number | null
+  sugar: number | null
+  addedSugar: number | null
+  sugarAlcohol: number | null
+  netCarbs: number | null
+  saturatedFat: number | null
+  transFat: number | null
+  polyunsaturatedFat: number | null
+  monounsaturatedFat: number | null
+  cholesterol: number | null
+  sodium: number | null
+  calcium: number | null
+  iron: number | null
+  potassium: number | null
+  vitaminA: number | null
+  vitaminC: number | null
+  vitaminD: number | null
   confidence: number | null
 }
 
@@ -49,7 +83,25 @@ export type MealMinAggregateOutputType = {
   protein: number | null
   carbs: number | null
   fat: number | null
+  fiber: number | null
+  sugar: number | null
+  addedSugar: number | null
+  sugarAlcohol: number | null
+  netCarbs: number | null
+  saturatedFat: number | null
+  transFat: number | null
+  polyunsaturatedFat: number | null
+  monounsaturatedFat: number | null
+  cholesterol: number | null
+  sodium: number | null
+  calcium: number | null
+  iron: number | null
+  potassium: number | null
+  vitaminA: number | null
+  vitaminC: number | null
+  vitaminD: number | null
   confidence: number | null
+  originalInput: string | null
   time: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -63,7 +115,25 @@ export type MealMaxAggregateOutputType = {
   protein: number | null
   carbs: number | null
   fat: number | null
+  fiber: number | null
+  sugar: number | null
+  addedSugar: number | null
+  sugarAlcohol: number | null
+  netCarbs: number | null
+  saturatedFat: number | null
+  transFat: number | null
+  polyunsaturatedFat: number | null
+  monounsaturatedFat: number | null
+  cholesterol: number | null
+  sodium: number | null
+  calcium: number | null
+  iron: number | null
+  potassium: number | null
+  vitaminA: number | null
+  vitaminC: number | null
+  vitaminD: number | null
   confidence: number | null
+  originalInput: string | null
   time: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -77,7 +147,25 @@ export type MealCountAggregateOutputType = {
   protein: number
   carbs: number
   fat: number
+  fiber: number
+  sugar: number
+  addedSugar: number
+  sugarAlcohol: number
+  netCarbs: number
+  saturatedFat: number
+  transFat: number
+  polyunsaturatedFat: number
+  monounsaturatedFat: number
+  cholesterol: number
+  sodium: number
+  calcium: number
+  iron: number
+  potassium: number
+  vitaminA: number
+  vitaminC: number
+  vitaminD: number
   confidence: number
+  originalInput: number
   time: number
   createdAt: number
   updatedAt: number
@@ -91,6 +179,23 @@ export type MealAvgAggregateInputType = {
   protein?: true
   carbs?: true
   fat?: true
+  fiber?: true
+  sugar?: true
+  addedSugar?: true
+  sugarAlcohol?: true
+  netCarbs?: true
+  saturatedFat?: true
+  transFat?: true
+  polyunsaturatedFat?: true
+  monounsaturatedFat?: true
+  cholesterol?: true
+  sodium?: true
+  calcium?: true
+  iron?: true
+  potassium?: true
+  vitaminA?: true
+  vitaminC?: true
+  vitaminD?: true
   confidence?: true
 }
 
@@ -99,6 +204,23 @@ export type MealSumAggregateInputType = {
   protein?: true
   carbs?: true
   fat?: true
+  fiber?: true
+  sugar?: true
+  addedSugar?: true
+  sugarAlcohol?: true
+  netCarbs?: true
+  saturatedFat?: true
+  transFat?: true
+  polyunsaturatedFat?: true
+  monounsaturatedFat?: true
+  cholesterol?: true
+  sodium?: true
+  calcium?: true
+  iron?: true
+  potassium?: true
+  vitaminA?: true
+  vitaminC?: true
+  vitaminD?: true
   confidence?: true
 }
 
@@ -109,7 +231,25 @@ export type MealMinAggregateInputType = {
   protein?: true
   carbs?: true
   fat?: true
+  fiber?: true
+  sugar?: true
+  addedSugar?: true
+  sugarAlcohol?: true
+  netCarbs?: true
+  saturatedFat?: true
+  transFat?: true
+  polyunsaturatedFat?: true
+  monounsaturatedFat?: true
+  cholesterol?: true
+  sodium?: true
+  calcium?: true
+  iron?: true
+  potassium?: true
+  vitaminA?: true
+  vitaminC?: true
+  vitaminD?: true
   confidence?: true
+  originalInput?: true
   time?: true
   createdAt?: true
   updatedAt?: true
@@ -123,7 +263,25 @@ export type MealMaxAggregateInputType = {
   protein?: true
   carbs?: true
   fat?: true
+  fiber?: true
+  sugar?: true
+  addedSugar?: true
+  sugarAlcohol?: true
+  netCarbs?: true
+  saturatedFat?: true
+  transFat?: true
+  polyunsaturatedFat?: true
+  monounsaturatedFat?: true
+  cholesterol?: true
+  sodium?: true
+  calcium?: true
+  iron?: true
+  potassium?: true
+  vitaminA?: true
+  vitaminC?: true
+  vitaminD?: true
   confidence?: true
+  originalInput?: true
   time?: true
   createdAt?: true
   updatedAt?: true
@@ -137,7 +295,25 @@ export type MealCountAggregateInputType = {
   protein?: true
   carbs?: true
   fat?: true
+  fiber?: true
+  sugar?: true
+  addedSugar?: true
+  sugarAlcohol?: true
+  netCarbs?: true
+  saturatedFat?: true
+  transFat?: true
+  polyunsaturatedFat?: true
+  monounsaturatedFat?: true
+  cholesterol?: true
+  sodium?: true
+  calcium?: true
+  iron?: true
+  potassium?: true
+  vitaminA?: true
+  vitaminC?: true
+  vitaminD?: true
   confidence?: true
+  originalInput?: true
   time?: true
   createdAt?: true
   updatedAt?: true
@@ -238,7 +414,25 @@ export type MealGroupByOutputType = {
   protein: number | null
   carbs: number | null
   fat: number | null
+  fiber: number | null
+  sugar: number | null
+  addedSugar: number | null
+  sugarAlcohol: number | null
+  netCarbs: number | null
+  saturatedFat: number | null
+  transFat: number | null
+  polyunsaturatedFat: number | null
+  monounsaturatedFat: number | null
+  cholesterol: number | null
+  sodium: number | null
+  calcium: number | null
+  iron: number | null
+  potassium: number | null
+  vitaminA: number | null
+  vitaminC: number | null
+  vitaminD: number | null
   confidence: number | null
+  originalInput: string | null
   time: string | null
   createdAt: Date
   updatedAt: Date
@@ -275,7 +469,25 @@ export type MealWhereInput = {
   protein?: Prisma.FloatNullableFilter<"Meal"> | number | null
   carbs?: Prisma.FloatNullableFilter<"Meal"> | number | null
   fat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  fiber?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sugar?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  addedSugar?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sugarAlcohol?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  netCarbs?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  saturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  transFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  polyunsaturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  monounsaturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  cholesterol?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sodium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  calcium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  iron?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  potassium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminA?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminC?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminD?: Prisma.FloatNullableFilter<"Meal"> | number | null
   confidence?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  originalInput?: Prisma.StringNullableFilter<"Meal"> | string | null
   time?: Prisma.StringNullableFilter<"Meal"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Meal"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Meal"> | Date | string
@@ -290,7 +502,25 @@ export type MealOrderByWithRelationInput = {
   protein?: Prisma.SortOrderInput | Prisma.SortOrder
   carbs?: Prisma.SortOrderInput | Prisma.SortOrder
   fat?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiber?: Prisma.SortOrderInput | Prisma.SortOrder
+  sugar?: Prisma.SortOrderInput | Prisma.SortOrder
+  addedSugar?: Prisma.SortOrderInput | Prisma.SortOrder
+  sugarAlcohol?: Prisma.SortOrderInput | Prisma.SortOrder
+  netCarbs?: Prisma.SortOrderInput | Prisma.SortOrder
+  saturatedFat?: Prisma.SortOrderInput | Prisma.SortOrder
+  transFat?: Prisma.SortOrderInput | Prisma.SortOrder
+  polyunsaturatedFat?: Prisma.SortOrderInput | Prisma.SortOrder
+  monounsaturatedFat?: Prisma.SortOrderInput | Prisma.SortOrder
+  cholesterol?: Prisma.SortOrderInput | Prisma.SortOrder
+  sodium?: Prisma.SortOrderInput | Prisma.SortOrder
+  calcium?: Prisma.SortOrderInput | Prisma.SortOrder
+  iron?: Prisma.SortOrderInput | Prisma.SortOrder
+  potassium?: Prisma.SortOrderInput | Prisma.SortOrder
+  vitaminA?: Prisma.SortOrderInput | Prisma.SortOrder
+  vitaminC?: Prisma.SortOrderInput | Prisma.SortOrder
+  vitaminD?: Prisma.SortOrderInput | Prisma.SortOrder
   confidence?: Prisma.SortOrderInput | Prisma.SortOrder
+  originalInput?: Prisma.SortOrderInput | Prisma.SortOrder
   time?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -308,7 +538,25 @@ export type MealWhereUniqueInput = Prisma.AtLeast<{
   protein?: Prisma.FloatNullableFilter<"Meal"> | number | null
   carbs?: Prisma.FloatNullableFilter<"Meal"> | number | null
   fat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  fiber?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sugar?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  addedSugar?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sugarAlcohol?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  netCarbs?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  saturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  transFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  polyunsaturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  monounsaturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  cholesterol?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sodium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  calcium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  iron?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  potassium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminA?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminC?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminD?: Prisma.FloatNullableFilter<"Meal"> | number | null
   confidence?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  originalInput?: Prisma.StringNullableFilter<"Meal"> | string | null
   time?: Prisma.StringNullableFilter<"Meal"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Meal"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Meal"> | Date | string
@@ -323,7 +571,25 @@ export type MealOrderByWithAggregationInput = {
   protein?: Prisma.SortOrderInput | Prisma.SortOrder
   carbs?: Prisma.SortOrderInput | Prisma.SortOrder
   fat?: Prisma.SortOrderInput | Prisma.SortOrder
+  fiber?: Prisma.SortOrderInput | Prisma.SortOrder
+  sugar?: Prisma.SortOrderInput | Prisma.SortOrder
+  addedSugar?: Prisma.SortOrderInput | Prisma.SortOrder
+  sugarAlcohol?: Prisma.SortOrderInput | Prisma.SortOrder
+  netCarbs?: Prisma.SortOrderInput | Prisma.SortOrder
+  saturatedFat?: Prisma.SortOrderInput | Prisma.SortOrder
+  transFat?: Prisma.SortOrderInput | Prisma.SortOrder
+  polyunsaturatedFat?: Prisma.SortOrderInput | Prisma.SortOrder
+  monounsaturatedFat?: Prisma.SortOrderInput | Prisma.SortOrder
+  cholesterol?: Prisma.SortOrderInput | Prisma.SortOrder
+  sodium?: Prisma.SortOrderInput | Prisma.SortOrder
+  calcium?: Prisma.SortOrderInput | Prisma.SortOrder
+  iron?: Prisma.SortOrderInput | Prisma.SortOrder
+  potassium?: Prisma.SortOrderInput | Prisma.SortOrder
+  vitaminA?: Prisma.SortOrderInput | Prisma.SortOrder
+  vitaminC?: Prisma.SortOrderInput | Prisma.SortOrder
+  vitaminD?: Prisma.SortOrderInput | Prisma.SortOrder
   confidence?: Prisma.SortOrderInput | Prisma.SortOrder
+  originalInput?: Prisma.SortOrderInput | Prisma.SortOrder
   time?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -345,7 +611,25 @@ export type MealScalarWhereWithAggregatesInput = {
   protein?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
   carbs?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
   fat?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  fiber?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  sugar?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  addedSugar?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  sugarAlcohol?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  netCarbs?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  saturatedFat?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  transFat?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  polyunsaturatedFat?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  monounsaturatedFat?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  cholesterol?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  sodium?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  calcium?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  iron?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  potassium?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  vitaminA?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  vitaminC?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  vitaminD?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
   confidence?: Prisma.FloatNullableWithAggregatesFilter<"Meal"> | number | null
+  originalInput?: Prisma.StringNullableWithAggregatesFilter<"Meal"> | string | null
   time?: Prisma.StringNullableWithAggregatesFilter<"Meal"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Meal"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Meal"> | Date | string
@@ -359,7 +643,25 @@ export type MealCreateInput = {
   protein?: number | null
   carbs?: number | null
   fat?: number | null
+  fiber?: number | null
+  sugar?: number | null
+  addedSugar?: number | null
+  sugarAlcohol?: number | null
+  netCarbs?: number | null
+  saturatedFat?: number | null
+  transFat?: number | null
+  polyunsaturatedFat?: number | null
+  monounsaturatedFat?: number | null
+  cholesterol?: number | null
+  sodium?: number | null
+  calcium?: number | null
+  iron?: number | null
+  potassium?: number | null
+  vitaminA?: number | null
+  vitaminC?: number | null
+  vitaminD?: number | null
   confidence?: number | null
+  originalInput?: string | null
   time?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -373,7 +675,25 @@ export type MealUncheckedCreateInput = {
   protein?: number | null
   carbs?: number | null
   fat?: number | null
+  fiber?: number | null
+  sugar?: number | null
+  addedSugar?: number | null
+  sugarAlcohol?: number | null
+  netCarbs?: number | null
+  saturatedFat?: number | null
+  transFat?: number | null
+  polyunsaturatedFat?: number | null
+  monounsaturatedFat?: number | null
+  cholesterol?: number | null
+  sodium?: number | null
+  calcium?: number | null
+  iron?: number | null
+  potassium?: number | null
+  vitaminA?: number | null
+  vitaminC?: number | null
+  vitaminD?: number | null
   confidence?: number | null
+  originalInput?: string | null
   time?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -387,7 +707,25 @@ export type MealUpdateInput = {
   protein?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   fat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  addedSugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugarAlcohol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  netCarbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  saturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  transFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  polyunsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  monounsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cholesterol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sodium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  calcium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  iron?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  potassium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminA?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminC?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminD?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  originalInput?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -401,7 +739,25 @@ export type MealUncheckedUpdateInput = {
   protein?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   fat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  addedSugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugarAlcohol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  netCarbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  saturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  transFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  polyunsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  monounsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cholesterol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sodium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  calcium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  iron?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  potassium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminA?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminC?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminD?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  originalInput?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -415,7 +771,25 @@ export type MealCreateManyInput = {
   protein?: number | null
   carbs?: number | null
   fat?: number | null
+  fiber?: number | null
+  sugar?: number | null
+  addedSugar?: number | null
+  sugarAlcohol?: number | null
+  netCarbs?: number | null
+  saturatedFat?: number | null
+  transFat?: number | null
+  polyunsaturatedFat?: number | null
+  monounsaturatedFat?: number | null
+  cholesterol?: number | null
+  sodium?: number | null
+  calcium?: number | null
+  iron?: number | null
+  potassium?: number | null
+  vitaminA?: number | null
+  vitaminC?: number | null
+  vitaminD?: number | null
   confidence?: number | null
+  originalInput?: string | null
   time?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -429,7 +803,25 @@ export type MealUpdateManyMutationInput = {
   protein?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   fat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  addedSugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugarAlcohol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  netCarbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  saturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  transFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  polyunsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  monounsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cholesterol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sodium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  calcium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  iron?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  potassium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminA?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminC?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminD?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  originalInput?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -442,7 +834,25 @@ export type MealUncheckedUpdateManyInput = {
   protein?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   fat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  addedSugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugarAlcohol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  netCarbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  saturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  transFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  polyunsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  monounsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cholesterol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sodium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  calcium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  iron?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  potassium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminA?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminC?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminD?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  originalInput?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -466,7 +876,25 @@ export type MealCountOrderByAggregateInput = {
   protein?: Prisma.SortOrder
   carbs?: Prisma.SortOrder
   fat?: Prisma.SortOrder
+  fiber?: Prisma.SortOrder
+  sugar?: Prisma.SortOrder
+  addedSugar?: Prisma.SortOrder
+  sugarAlcohol?: Prisma.SortOrder
+  netCarbs?: Prisma.SortOrder
+  saturatedFat?: Prisma.SortOrder
+  transFat?: Prisma.SortOrder
+  polyunsaturatedFat?: Prisma.SortOrder
+  monounsaturatedFat?: Prisma.SortOrder
+  cholesterol?: Prisma.SortOrder
+  sodium?: Prisma.SortOrder
+  calcium?: Prisma.SortOrder
+  iron?: Prisma.SortOrder
+  potassium?: Prisma.SortOrder
+  vitaminA?: Prisma.SortOrder
+  vitaminC?: Prisma.SortOrder
+  vitaminD?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
+  originalInput?: Prisma.SortOrder
   time?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -478,6 +906,23 @@ export type MealAvgOrderByAggregateInput = {
   protein?: Prisma.SortOrder
   carbs?: Prisma.SortOrder
   fat?: Prisma.SortOrder
+  fiber?: Prisma.SortOrder
+  sugar?: Prisma.SortOrder
+  addedSugar?: Prisma.SortOrder
+  sugarAlcohol?: Prisma.SortOrder
+  netCarbs?: Prisma.SortOrder
+  saturatedFat?: Prisma.SortOrder
+  transFat?: Prisma.SortOrder
+  polyunsaturatedFat?: Prisma.SortOrder
+  monounsaturatedFat?: Prisma.SortOrder
+  cholesterol?: Prisma.SortOrder
+  sodium?: Prisma.SortOrder
+  calcium?: Prisma.SortOrder
+  iron?: Prisma.SortOrder
+  potassium?: Prisma.SortOrder
+  vitaminA?: Prisma.SortOrder
+  vitaminC?: Prisma.SortOrder
+  vitaminD?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
 }
 
@@ -488,7 +933,25 @@ export type MealMaxOrderByAggregateInput = {
   protein?: Prisma.SortOrder
   carbs?: Prisma.SortOrder
   fat?: Prisma.SortOrder
+  fiber?: Prisma.SortOrder
+  sugar?: Prisma.SortOrder
+  addedSugar?: Prisma.SortOrder
+  sugarAlcohol?: Prisma.SortOrder
+  netCarbs?: Prisma.SortOrder
+  saturatedFat?: Prisma.SortOrder
+  transFat?: Prisma.SortOrder
+  polyunsaturatedFat?: Prisma.SortOrder
+  monounsaturatedFat?: Prisma.SortOrder
+  cholesterol?: Prisma.SortOrder
+  sodium?: Prisma.SortOrder
+  calcium?: Prisma.SortOrder
+  iron?: Prisma.SortOrder
+  potassium?: Prisma.SortOrder
+  vitaminA?: Prisma.SortOrder
+  vitaminC?: Prisma.SortOrder
+  vitaminD?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
+  originalInput?: Prisma.SortOrder
   time?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -502,7 +965,25 @@ export type MealMinOrderByAggregateInput = {
   protein?: Prisma.SortOrder
   carbs?: Prisma.SortOrder
   fat?: Prisma.SortOrder
+  fiber?: Prisma.SortOrder
+  sugar?: Prisma.SortOrder
+  addedSugar?: Prisma.SortOrder
+  sugarAlcohol?: Prisma.SortOrder
+  netCarbs?: Prisma.SortOrder
+  saturatedFat?: Prisma.SortOrder
+  transFat?: Prisma.SortOrder
+  polyunsaturatedFat?: Prisma.SortOrder
+  monounsaturatedFat?: Prisma.SortOrder
+  cholesterol?: Prisma.SortOrder
+  sodium?: Prisma.SortOrder
+  calcium?: Prisma.SortOrder
+  iron?: Prisma.SortOrder
+  potassium?: Prisma.SortOrder
+  vitaminA?: Prisma.SortOrder
+  vitaminC?: Prisma.SortOrder
+  vitaminD?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
+  originalInput?: Prisma.SortOrder
   time?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -514,6 +995,23 @@ export type MealSumOrderByAggregateInput = {
   protein?: Prisma.SortOrder
   carbs?: Prisma.SortOrder
   fat?: Prisma.SortOrder
+  fiber?: Prisma.SortOrder
+  sugar?: Prisma.SortOrder
+  addedSugar?: Prisma.SortOrder
+  sugarAlcohol?: Prisma.SortOrder
+  netCarbs?: Prisma.SortOrder
+  saturatedFat?: Prisma.SortOrder
+  transFat?: Prisma.SortOrder
+  polyunsaturatedFat?: Prisma.SortOrder
+  monounsaturatedFat?: Prisma.SortOrder
+  cholesterol?: Prisma.SortOrder
+  sodium?: Prisma.SortOrder
+  calcium?: Prisma.SortOrder
+  iron?: Prisma.SortOrder
+  potassium?: Prisma.SortOrder
+  vitaminA?: Prisma.SortOrder
+  vitaminC?: Prisma.SortOrder
+  vitaminD?: Prisma.SortOrder
   confidence?: Prisma.SortOrder
 }
 
@@ -559,14 +1057,6 @@ export type MealUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.MealScalarWhereInput | Prisma.MealScalarWhereInput[]
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type MealCreateWithoutUserInput = {
   id?: string
   name: string
@@ -574,7 +1064,25 @@ export type MealCreateWithoutUserInput = {
   protein?: number | null
   carbs?: number | null
   fat?: number | null
+  fiber?: number | null
+  sugar?: number | null
+  addedSugar?: number | null
+  sugarAlcohol?: number | null
+  netCarbs?: number | null
+  saturatedFat?: number | null
+  transFat?: number | null
+  polyunsaturatedFat?: number | null
+  monounsaturatedFat?: number | null
+  cholesterol?: number | null
+  sodium?: number | null
+  calcium?: number | null
+  iron?: number | null
+  potassium?: number | null
+  vitaminA?: number | null
+  vitaminC?: number | null
+  vitaminD?: number | null
   confidence?: number | null
+  originalInput?: string | null
   time?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -587,7 +1095,25 @@ export type MealUncheckedCreateWithoutUserInput = {
   protein?: number | null
   carbs?: number | null
   fat?: number | null
+  fiber?: number | null
+  sugar?: number | null
+  addedSugar?: number | null
+  sugarAlcohol?: number | null
+  netCarbs?: number | null
+  saturatedFat?: number | null
+  transFat?: number | null
+  polyunsaturatedFat?: number | null
+  monounsaturatedFat?: number | null
+  cholesterol?: number | null
+  sodium?: number | null
+  calcium?: number | null
+  iron?: number | null
+  potassium?: number | null
+  vitaminA?: number | null
+  vitaminC?: number | null
+  vitaminD?: number | null
   confidence?: number | null
+  originalInput?: string | null
   time?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -629,7 +1155,25 @@ export type MealScalarWhereInput = {
   protein?: Prisma.FloatNullableFilter<"Meal"> | number | null
   carbs?: Prisma.FloatNullableFilter<"Meal"> | number | null
   fat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  fiber?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sugar?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  addedSugar?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sugarAlcohol?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  netCarbs?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  saturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  transFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  polyunsaturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  monounsaturatedFat?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  cholesterol?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  sodium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  calcium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  iron?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  potassium?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminA?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminC?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  vitaminD?: Prisma.FloatNullableFilter<"Meal"> | number | null
   confidence?: Prisma.FloatNullableFilter<"Meal"> | number | null
+  originalInput?: Prisma.StringNullableFilter<"Meal"> | string | null
   time?: Prisma.StringNullableFilter<"Meal"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Meal"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Meal"> | Date | string
@@ -643,7 +1187,25 @@ export type MealCreateManyUserInput = {
   protein?: number | null
   carbs?: number | null
   fat?: number | null
+  fiber?: number | null
+  sugar?: number | null
+  addedSugar?: number | null
+  sugarAlcohol?: number | null
+  netCarbs?: number | null
+  saturatedFat?: number | null
+  transFat?: number | null
+  polyunsaturatedFat?: number | null
+  monounsaturatedFat?: number | null
+  cholesterol?: number | null
+  sodium?: number | null
+  calcium?: number | null
+  iron?: number | null
+  potassium?: number | null
+  vitaminA?: number | null
+  vitaminC?: number | null
+  vitaminD?: number | null
   confidence?: number | null
+  originalInput?: string | null
   time?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -656,7 +1218,25 @@ export type MealUpdateWithoutUserInput = {
   protein?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   fat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  addedSugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugarAlcohol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  netCarbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  saturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  transFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  polyunsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  monounsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cholesterol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sodium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  calcium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  iron?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  potassium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminA?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminC?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminD?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  originalInput?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -669,7 +1249,25 @@ export type MealUncheckedUpdateWithoutUserInput = {
   protein?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   fat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  addedSugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugarAlcohol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  netCarbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  saturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  transFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  polyunsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  monounsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cholesterol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sodium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  calcium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  iron?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  potassium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminA?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminC?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminD?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  originalInput?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -682,7 +1280,25 @@ export type MealUncheckedUpdateManyWithoutUserInput = {
   protein?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   carbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   fat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  fiber?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  addedSugar?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sugarAlcohol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  netCarbs?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  saturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  transFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  polyunsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  monounsaturatedFat?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  cholesterol?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  sodium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  calcium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  iron?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  potassium?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminA?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminC?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  vitaminD?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   confidence?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  originalInput?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   time?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -697,7 +1313,25 @@ export type MealSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   protein?: boolean
   carbs?: boolean
   fat?: boolean
+  fiber?: boolean
+  sugar?: boolean
+  addedSugar?: boolean
+  sugarAlcohol?: boolean
+  netCarbs?: boolean
+  saturatedFat?: boolean
+  transFat?: boolean
+  polyunsaturatedFat?: boolean
+  monounsaturatedFat?: boolean
+  cholesterol?: boolean
+  sodium?: boolean
+  calcium?: boolean
+  iron?: boolean
+  potassium?: boolean
+  vitaminA?: boolean
+  vitaminC?: boolean
+  vitaminD?: boolean
   confidence?: boolean
+  originalInput?: boolean
   time?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -712,7 +1346,25 @@ export type MealSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   protein?: boolean
   carbs?: boolean
   fat?: boolean
+  fiber?: boolean
+  sugar?: boolean
+  addedSugar?: boolean
+  sugarAlcohol?: boolean
+  netCarbs?: boolean
+  saturatedFat?: boolean
+  transFat?: boolean
+  polyunsaturatedFat?: boolean
+  monounsaturatedFat?: boolean
+  cholesterol?: boolean
+  sodium?: boolean
+  calcium?: boolean
+  iron?: boolean
+  potassium?: boolean
+  vitaminA?: boolean
+  vitaminC?: boolean
+  vitaminD?: boolean
   confidence?: boolean
+  originalInput?: boolean
   time?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -727,7 +1379,25 @@ export type MealSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   protein?: boolean
   carbs?: boolean
   fat?: boolean
+  fiber?: boolean
+  sugar?: boolean
+  addedSugar?: boolean
+  sugarAlcohol?: boolean
+  netCarbs?: boolean
+  saturatedFat?: boolean
+  transFat?: boolean
+  polyunsaturatedFat?: boolean
+  monounsaturatedFat?: boolean
+  cholesterol?: boolean
+  sodium?: boolean
+  calcium?: boolean
+  iron?: boolean
+  potassium?: boolean
+  vitaminA?: boolean
+  vitaminC?: boolean
+  vitaminD?: boolean
   confidence?: boolean
+  originalInput?: boolean
   time?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -742,14 +1412,32 @@ export type MealSelectScalar = {
   protein?: boolean
   carbs?: boolean
   fat?: boolean
+  fiber?: boolean
+  sugar?: boolean
+  addedSugar?: boolean
+  sugarAlcohol?: boolean
+  netCarbs?: boolean
+  saturatedFat?: boolean
+  transFat?: boolean
+  polyunsaturatedFat?: boolean
+  monounsaturatedFat?: boolean
+  cholesterol?: boolean
+  sodium?: boolean
+  calcium?: boolean
+  iron?: boolean
+  potassium?: boolean
+  vitaminA?: boolean
+  vitaminC?: boolean
+  vitaminD?: boolean
   confidence?: boolean
+  originalInput?: boolean
   time?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   userId?: boolean
 }
 
-export type MealOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "calories" | "protein" | "carbs" | "fat" | "confidence" | "time" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["meal"]>
+export type MealOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "calories" | "protein" | "carbs" | "fat" | "fiber" | "sugar" | "addedSugar" | "sugarAlcohol" | "netCarbs" | "saturatedFat" | "transFat" | "polyunsaturatedFat" | "monounsaturatedFat" | "cholesterol" | "sodium" | "calcium" | "iron" | "potassium" | "vitaminA" | "vitaminC" | "vitaminD" | "confidence" | "originalInput" | "time" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["meal"]>
 export type MealInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -772,7 +1460,25 @@ export type $MealPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     protein: number | null
     carbs: number | null
     fat: number | null
+    fiber: number | null
+    sugar: number | null
+    addedSugar: number | null
+    sugarAlcohol: number | null
+    netCarbs: number | null
+    saturatedFat: number | null
+    transFat: number | null
+    polyunsaturatedFat: number | null
+    monounsaturatedFat: number | null
+    cholesterol: number | null
+    sodium: number | null
+    calcium: number | null
+    iron: number | null
+    potassium: number | null
+    vitaminA: number | null
+    vitaminC: number | null
+    vitaminD: number | null
     confidence: number | null
+    originalInput: string | null
     time: string | null
     createdAt: Date
     updatedAt: Date
@@ -1207,7 +1913,25 @@ export interface MealFieldRefs {
   readonly protein: Prisma.FieldRef<"Meal", 'Float'>
   readonly carbs: Prisma.FieldRef<"Meal", 'Float'>
   readonly fat: Prisma.FieldRef<"Meal", 'Float'>
+  readonly fiber: Prisma.FieldRef<"Meal", 'Float'>
+  readonly sugar: Prisma.FieldRef<"Meal", 'Float'>
+  readonly addedSugar: Prisma.FieldRef<"Meal", 'Float'>
+  readonly sugarAlcohol: Prisma.FieldRef<"Meal", 'Float'>
+  readonly netCarbs: Prisma.FieldRef<"Meal", 'Float'>
+  readonly saturatedFat: Prisma.FieldRef<"Meal", 'Float'>
+  readonly transFat: Prisma.FieldRef<"Meal", 'Float'>
+  readonly polyunsaturatedFat: Prisma.FieldRef<"Meal", 'Float'>
+  readonly monounsaturatedFat: Prisma.FieldRef<"Meal", 'Float'>
+  readonly cholesterol: Prisma.FieldRef<"Meal", 'Float'>
+  readonly sodium: Prisma.FieldRef<"Meal", 'Float'>
+  readonly calcium: Prisma.FieldRef<"Meal", 'Float'>
+  readonly iron: Prisma.FieldRef<"Meal", 'Float'>
+  readonly potassium: Prisma.FieldRef<"Meal", 'Float'>
+  readonly vitaminA: Prisma.FieldRef<"Meal", 'Float'>
+  readonly vitaminC: Prisma.FieldRef<"Meal", 'Float'>
+  readonly vitaminD: Prisma.FieldRef<"Meal", 'Float'>
   readonly confidence: Prisma.FieldRef<"Meal", 'Float'>
+  readonly originalInput: Prisma.FieldRef<"Meal", 'String'>
   readonly time: Prisma.FieldRef<"Meal", 'String'>
   readonly createdAt: Prisma.FieldRef<"Meal", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Meal", 'DateTime'>
